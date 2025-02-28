@@ -25,10 +25,9 @@ The project covers the following key steps:
 8. **Early Stoping** Implements early stop in the XGBoost algorithm.
 
 ## Repository Structure
-
 *   **README.md:** This file, providing an overview of the project.
-*   **cardio_train.csv.zip:** It is expected to contain the original data file.
-* **cardio_train.csv:** Is the result of decompressing the zip file.
+*   **cardio_train_Models.ipynb:** Jupyter Notebook containing the complete analysis and code.
+*   **3. cardio_train.csv:** The dataset used for training and evaluation.
 
 ## Data
 
