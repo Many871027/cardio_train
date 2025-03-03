@@ -4,12 +4,12 @@ This project focuses on predicting the presence of cardiovascular disease (CVD) 
 
 ## Project Overview
 
-Cardiovascular diseases are a leading cause of death globally. Early and accurate prediction of CVD risk is crucial for effective prevention and treatment. This project leverages machine learning techniques to analyze patient data and identify individuals at high risk.  By identifying patterns and relationships within the data, we aim to build a model that can assist healthcare professionals in making informed decisions.
+Cardiovascular diseases are a leading cause of death globally. Early and accurate prediction of CVD risk is crucial for effective prevention and treatment. This project leverages machine learning techniques to analyze patient data and identify individuals at high risk. By identifying patterns and relationships within the data, we aim to build a model that can assist healthcare professionals in making informed decisions.
 
 The project covers the following key steps:
 
-1.  **Data Loading and Preprocessing:** The dataset is loaded, preprocessed (age conversion, ID removal), and split into training and testing sets.
-2.  **Model Training and Evaluation:** A variety of classification models are trained and evaluated, including:
+*   **Data Loading and Preprocessing:** The dataset is loaded, preprocessed (age conversion from days to years, removal of the ID column), and split into training and testing sets.
+*   **Model Training and Evaluation:** A variety of classification models are trained and evaluated, including:
     *   KNN
     *   Decision Tree
     *   Random Forest
@@ -17,12 +17,13 @@ The project covers the following key steps:
     *   Gradient Boosting
     *   XGBoost
     *   Extra Trees
-3.  **Hyperparameter Tuning:**  `GridSearchCV` is used to optimize model hyperparameters, focusing on Decision Tree (initial example) and Gradient Boosting (improved example).
-4.  **Ensemble Methods:** Stacking is demonstrated as a technique to combine multiple models.
-5.  **Pipeline:** `Pipeline` is used to streamline preprocessing (scaling) and model training.
-6.  **Model Comparison:**  The performance of different models is compared using test accuracy, visualized with a bar plot.
-7.  **Checkpoint:** Saves and loads the status of GridSearch to resume the train.
-8. **Early Stoping** Implements early stop in the XGBoost algorithm.
+*   **Hyperparameter Tuning:**  `RandomizedSearchCV` is used for efficient hyperparameter optimization of *all* models.  This approach explores a wider range of hyperparameter combinations compared to traditional `GridSearchCV`, often finding better models in less time.  Distributions of hyperparameters are defined using `scipy.stats`.
+*   **Ensemble Methods:** Stacking is demonstrated as a technique to combine the predictions of multiple base learners to potentially improve overall performance.
+*   **Pipeline:**  `Pipeline` is used extensively to streamline preprocessing (using `StandardScaler` for feature scaling) and model training. This ensures proper data handling and avoids data leakage during cross-validation.
+*   **Model Comparison:** The performance of different models (after hyperparameter tuning) is compared using test accuracy.  Interactive visualizations are generated using `Plotly` for clear and informative comparisons.
+* **Checkpoint:** Saves and loads the status of `RandomizedSearchCV` using `joblib` to allow resuming training from where it left off, saving significant time.
+*   **Early Stopping:** Implements early stopping in the XGBoost algorithm to prevent overfitting and speed up training.
+* **Repeated Stratified K-Fold Cross-Validation:**  Utilizes `RepeatedStratifiedKFold` for robust model evaluation.
 
 ## Repository Structure
 *   **README.md:** This file, providing an overview of the project.
